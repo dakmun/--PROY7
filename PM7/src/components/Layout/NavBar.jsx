@@ -166,7 +166,7 @@ export default function NavBar() {
                   onClick={openLogoutModal}
                   variant="contained"
                   color="secondary"
-                  sx={{  display: { xs: 'none', sm: 'block' }, marginRight: '10px' }}
+                  sx={{  display: {  }, marginRight: '10px' }}
                 >
                   Logout
                 </Button>
@@ -195,7 +195,7 @@ export default function NavBar() {
                 to="/login"
                 variant="contained"
                 color="primary"
-                sx={{   display: { xs: 'none', sm: 'block' }, marginRight: '10px' }}
+                sx={{   display: {  }, marginRight: '10px' }}
               >
                 Login
               </Button>

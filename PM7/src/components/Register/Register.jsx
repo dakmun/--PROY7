@@ -127,7 +127,7 @@ export default function Register() {
           </Button>
           <Typography variant="body2" sx={{ marginTop: 2, color: '#9e9e9e' }}>
           Ya estas registrado?{' '}
-          <Link href="/register" underline="hover" sx={{ color: '#f95f35' }}>
+          <Link href="/login" underline="hover" sx={{ color: '#f95f35' }}>
             Inicia Sesión
           </Link>
         </Typography>
