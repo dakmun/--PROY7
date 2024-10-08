@@ -11,7 +11,7 @@ const UserOrders = () => {
   const [error, setError] = useState(null);
   const { token, user, setUser } = useAuth();
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(50);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -140,7 +140,7 @@ const UserOrders = () => {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[10, 25, 100]}
+          rowsPerPageOptions={[50, 100, 150]}
           component="div"
           count={orders.length}
           rowsPerPage={rowsPerPage}

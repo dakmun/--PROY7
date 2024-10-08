@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, TextField, Button, Typography, Alert } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Box, TextField, Button, Typography, Alert, Link } from '@mui/material';
 import useAuth from '../../contexts/useAuth';
 
 

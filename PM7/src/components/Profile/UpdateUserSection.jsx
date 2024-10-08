@@ -2,8 +2,20 @@ import React from 'react';
 import { Box } from '@mui/material';
 import  UpdateUserData  from './UpdateUserData';
 import  UpdateUserPassword  from './UpdateUserPassword';
+import useAuth from '../../contexts/useAuth';
 
 const UpdateMainUserSection = () => {
+
+  const { user } = useAuth();
+
+  if (user.isAdmin) {
+
+    return 
+  }
+
+
+
+
   return (
 <Box
 sx={{

@@ -171,7 +171,7 @@ export default function NavBar() {
                   Logout
                 </Button>
                 <Modal open={isLogoutModalOpen} onClose={closeLogoutModal}>
-                  <Card sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', padding: 4, borderRadius: 2 }}>
+                  <Card sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', padding: 4, borderRadius: 2 , minWidth: '340px' }}>
                     <Typography variant="h6" sx={{ mb: 2 }}>
                       ¿Estás seguro de que quieres cerrar sesión?
                     </Typography>

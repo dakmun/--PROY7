@@ -246,23 +246,28 @@ sx={{ mb: 2, textAlign: 'center' }} >
               </TableRow>
             </TableHead>
             <TableBody>
-              {users.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).reverse().map((user) => (
-                <TableRow hover key={user._id}>
-                  <TableCell>{user.name}</TableCell>
-                  <TableCell>{user.email}</TableCell>
-                  <TableCell>
-                    <IconButton color="warning" onClick={() => handleEditUser(user)}>
-                      <EditIcon />
-                    </IconButton>
-                  </TableCell>
-                  <TableCell>
-                    <IconButton color="error" onClick={() => handleOpenDeleteModal(user._id)}>
-                      <DeleteIcon />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
+  {users.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).reverse().map((user) => (
+    <TableRow hover key={user._id}>
+      <TableCell>{user.name}</TableCell>
+      <TableCell>{user.email}</TableCell>
+      <TableCell>
+        {!user.isAdmin && ( // Verificamos si no es admin
+          <IconButton color="warning" onClick={() => handleEditUser(user)}>
+            <EditIcon />
+          </IconButton>
+        )}
+      </TableCell>
+      <TableCell>
+        {!user.isAdmin && ( // Verificamos si no es admin
+          <IconButton color="error" onClick={() => handleOpenDeleteModal(user._id)}>
+            <DeleteIcon />
+          </IconButton>
+        )}
+      </TableCell>
+    </TableRow>
+  ))}
+</TableBody>
+
           </Table>
         </TableContainer>
         <TablePagination
@@ -296,20 +301,7 @@ sx={{ mb: 2, textAlign: 'center' }} >
             required
             sx={{ mb: 2 }}
           />
-          <TextField
-            margin="dense"
-            label="Rol"
-            fullWidth
-            select
-            value={isAdmin}
-            onChange={(e) => setIsAdmin(e.target.value === 'true')}
-            SelectProps={{
-              native: true,
-            }}
-          >
-            <option value={false}>Usuario</option>
-            <option value={true}>Administrador</option>
-          </TextField>
+
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseModal} color="secondary">Cancelar</Button>
