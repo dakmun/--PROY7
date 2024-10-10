@@ -25,7 +25,7 @@ export default function Home() {
           component={Link}
           to="/products"
           variant="contained"
-          color="primary"
+          color="error"
           size="large"
           sx={{ textTransform: "none", mb: 8 }}
         >

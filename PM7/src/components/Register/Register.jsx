@@ -57,8 +57,14 @@ export default function Register() {
 
   if (token && !user) {
     return (
-      <Alert severity="success">
-        ¡Registro exitoso! Ahora puedes <Button color="primary" component={Link} to="/login">iniciar sesión</Button>.
+      <Alert severity="success" sx={{ placeItems: 'center' }}>
+        ¡Registro exitoso!
+        <Button  
+
+            sx={{ ml: 2 }}
+            variant="contained"
+            color="primary"
+            href="/login">Iniciar Sesión</Button>
       </Alert>
     );
   }

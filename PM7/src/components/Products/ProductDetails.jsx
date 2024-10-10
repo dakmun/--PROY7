@@ -148,7 +148,7 @@ export default function ProductDetails() {
            Agregar al carro
           </Button>
           <Button variant="contained" color="error" href='/cart' sx={{ flexGrow: 1 }}>
-           Comprar
+            Ver Carrito
           </Button>
         </Box>
       </Box>

@@ -94,7 +94,7 @@ export default function Hero() {
         flexDirection: { xs: 'column-reverse', sm: 'row' },
         justifyContent: { xs: 'center', sm: 'space-around' },
         alignItems: 'center',
-        height: '83vh',
+        height: '93vh',
         padding: '0 5%',
         background: 'linear-gradient(90deg, #0D0D0D, #1A1A1A)',
         color: '#fff',

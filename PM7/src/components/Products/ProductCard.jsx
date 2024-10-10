@@ -84,12 +84,18 @@ const ProductCard = ({ product }) => {
         <Link to={`/products/${product._id}`} style={{ textDecoration: 'none' }}>
           <Typography
             variant="h6"
-     
+
+            
             sx={{
          
               marginBottom: 1,
-              color: isDarkMode ? '#fff' : '#000',
-              '&:hover': { textDecoration: 'underline' }, // Subrayado al hacer hover
+              color: isDarkMode ? '#fff' : '#000' ,  
+              textDecoration: hovered ? 'underline' : 'none',
+              textDecorationStyle: hovered ? 'double' : 'none',
+              textDecorationColor: hovered ? '#1565c0' : 'transparent', 
+              textDecorationThickness: hovered ? 'from-font' : 'from-font',
+
+
             }}
           >
             {product.name.substring(0, 10)}...

@@ -90,12 +90,18 @@ export default function NavBar() {
     borderBottom: isDarkMode ? '1px solid #1e2327' : '1px solid #e8eaee',
   };
 
+    // Cambia el color de las letras basado en el tema (oscuro o claro)
+    const textColor = isDarkMode ? '#fff' : '#000';
+    // Cambia el color de los iconos basado en el tema
+    const iconColor = isDarkMode ? '#fff' : '#555';
+
   // Menú móvil
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' , backgroundColor: isDarkMode ? '#141a21' : '#fff'  , height: '100vh' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        LOGO
-      </Typography>
+      <Typography variant="h6" noWrap sx={{ flexGrow: 1 , my: '5px' }}> 
+          <Button component={Link} to="/" sx={{ color: textColor , justifyContent: 'flex-start' , fontSize: '1.2rem' }}>
+            LOGO.
+            </Button> </Typography>
       <Divider />
       <List>
           <ListItem button='true'  component={Link} to='/'sx={{ color: isDarkMode ? '#fff' : '#000'}} > Home </ListItem>
@@ -106,10 +112,7 @@ export default function NavBar() {
     </Box>
   );
 
-  // Cambia el color de las letras basado en el tema (oscuro o claro)
-  const textColor = isDarkMode ? '#fff' : '#000';
-  // Cambia el color de los iconos basado en el tema
-  const iconColor = isDarkMode ? '#fff' : '#555';
+
 
   return (
     <Box sx={{ width: '100%', boxSizing: 'border-box' }}>
@@ -129,18 +132,17 @@ export default function NavBar() {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ display: { sm: 'none' }, color: iconColor }} // Aplicar color condicionalmente a los íconos
+            sx={{ display: { md: 'none' }, color: iconColor }} // Aplicar color condicionalmente a los íconos
           >
             <MenuIcon />
           </IconButton>
 
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, fontWeight: 'bold', color: textColor, cursor: 'pointer' }} // Aplicar color condicionalmente
-          >
+          <Typography variant="h6" noWrap sx={{ flexGrow: 1 }}>
+          <Button component={Link} to="/" sx={{ color: textColor , justifyContent: 'flex-start' , fontSize: '1.2rem' }}>
             LOGO.
-          </Typography>
+            </Button> </Typography>
+         
+     
 
           {/* Desktop Links */}
           <Box sx={{ display: { xs: 'none', md: 'block' } }}>
@@ -166,6 +168,7 @@ export default function NavBar() {
                   onClick={openLogoutModal}
                   variant="contained"
                   color="secondary"
+                  size='small'
                   sx={{  display: {  }, marginRight: '10px' }}
                 >
                   Logout
@@ -195,6 +198,7 @@ export default function NavBar() {
                 to="/login"
                 variant="contained"
                 color="primary"
+                   size='small'
                 sx={{   display: {  }, marginRight: '10px' }}
               >
                 Login
@@ -258,7 +262,7 @@ export default function NavBar() {
             keepMounted: true,
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
+            display: { xs: 'block', md: 'none' },
 
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240  }
           

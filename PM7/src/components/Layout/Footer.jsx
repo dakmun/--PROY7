@@ -111,7 +111,7 @@ export default function Footer() {
 
         <Box mt={4} textAlign="center">
           <Typography variant="body2" color="inherit">
-            &copy; {new Date().getFullYear()} Your Company Name. All rights reserved.
+            &copy; {new Date().getFullYear()} LOGO.. All rights reserved.
           </Typography>
         </Box>
       </Box>
