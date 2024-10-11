@@ -15,6 +15,7 @@ import {
   DialogContent,
   DialogActions,
   Alert,
+  Divider
 
 
 
@@ -25,6 +26,7 @@ import { useCart } from '../../contexts/useCart'; // Contexto del carrito
 import { useAuth } from '../../contexts/useAuth'; // Contexto de autenticación
 import Login from '../Login/Login'; // Componente de inicio de sesión
 import { useNavigate } from 'react-router-dom';
+import { padding } from '@mui/system';
 
 
 const Cart = () => {
@@ -94,96 +96,71 @@ const Cart = () => {
   }
 
   return (
-    <Container sx={{ py: 6 }}>
-      <Typography variant="h4" fontWeight="bold" gutterBottom>
+  
+<>
+
+<Typography variant="h4" fontWeight="bold" gutterBottom sx={{ textAlign: 'center', pt: 8 }}>
         Cart ({cartLength()})
       </Typography>
-      <Grid container spacing={3}>
-        {/* Sección de productos */}
-        <Grid item xs={12} md={8}>
-          <TableContainer component={Box} 
-          sx={{
 
-            border: '1px solid #c2c2c278',
-            borderRadius: '8px',
-             overflowX: 'auto' }} elevation={3}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell><Typography fontWeight="bold">Productos</Typography></TableCell>
-                  <TableCell align="center"><Typography fontWeight="bold">Unidades</Typography></TableCell>
-                  <TableCell align="right"><Typography fontWeight="bold">Subtotal</Typography></TableCell>
-                  <TableCell align="right"><Typography fontWeight="bold">Eliminar</Typography></TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {cart.map((item) => (
-                  <TableRow key={item._id}>
-                    <TableCell>
-                      <Box display="flex" alignItems="center" gap={2}>
-                        <img
-                          src={item.mainImage}
-                          alt={item.name}
-                          width="60px"
-                          style={{ borderRadius: '8px' }}
-                        />
-                        <Box>
-                          <Typography variant="body1">{item.name}</Typography>
-                          <Typography variant="body2" color="textSecondary">
-                            Color: {item.color}
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </TableCell>
-                    <TableCell align="center">
-                      <TextField
-                        select
-                        value={item.quantity}
-                        onChange={(e) => {
-                          const newQuantity = e.target.value;
-                          const updatedCart = cart.map((cartItem) =>
-                            cartItem._id === item._id
-                              ? { ...cartItem, quantity: newQuantity }
-                              : cartItem
-                          );
-                          setCart(updatedCart);
-                        }}
-                        size="small"
-                        variant="outlined"
-                        sx={{ width: '60px' }}
-                      >
-                        {[...Array(10).keys()].map((i) => (
-                          <MenuItem key={i + 1} value={i + 1}>
-                            {i + 1}
-                          </MenuItem>
-                        ))}
-                      </TextField>
-                    </TableCell>
-                    <TableCell align="right">
-                      <Typography variant="body1" fontWeight="bold">
-                        ${parseInt((item.price * item.quantity).toFixed(2))}
-                      </Typography>
-                    </TableCell>
-                    <TableCell align="center">
-                      <IconButton onClick={() => handleRemoveItem(item._id)}>
-                        <DeleteIcon color="error" />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <Box mt={2}>
-            <Button component={Link} to="/products" variant="text" color="primary">
-              &lt; Seguir Comprando
-            </Button>
-          </Box>
-        </Grid>
-        {/* Resumen de la compra */}
-        <Grid item xs={12} md={4}>
+<Box sx={{ display: 'flex', flexDirection: {xs: 'column', sm: 'row'}, alignItems: {xs:'center' ,sm:'baseline'}, justifyContent: 'space-evenly', width: '100%', mx: '0',mt: '0', py: '0', px: '0'  }}>
+
+
+<>
+<Box sx={{maxWidth:'666px', display: 'flex',  flexDirection: 'column', alignItems: 'baseline', justifyContent: 'space-between', width: '100%', mx: '0',mt: '0', py: '0', px: '16px'  }}>
+
+<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'baseline', justifyContent: 'space-between', width: '100%', mx: '0',mt: '0', py: '0', px: '0' , border: '1px solid #c2c2c278', borderRadius: '8px' }}>
+    
+    <Box sx={{ display: 'flex',  flexDirection: 'column', alignItems: 'center', gap: 2, width: '100%', justifyContent: 'space-between' }}>  
+      
+    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '20px' , py: 2, px: 1, width: '100%', justifyContent: 'space-between' }}>  
+    <Typography  sx={{width: '100px', ml: '0'}} fontWeight="bold">Productos</Typography>
+    <Typography sx={{ mr: '8px'}} fontWeight="bold">Unidades</Typography>
+    <Typography sx={{ mr: '16px'}} fontWeight="bold">Subtotal</Typography>
+    <Typography sx={{width: '24px'}} fontWeight="bold">{''}</Typography>
+
+    </Box>
+  
+    </Box>
+    {cart.map((item) => (
+
+<>
+<Box key={item._id} sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 2 , width: '100%', justifyContent: 'space-between' , padding: '16px', borderTop: '1px solid #c2c2c278' }}>  
+      <Box sx={{ display: 'flex', pl: '16px', pr: 0, flexDirection: {xs: 'column', sm: 'row'}, alignItems: 'center', gap: 2 }}>
+    <img src={item.mainImage} alt={item.name} width="64px" style={{ borderRadius: '8px', aspectRatio: '1', objectFit: 'contain' }} />
+
+  
+  
+    </Box>
+    <TextField
+    sx={{left: '8px'}}
+    
+    select value={item.quantity} onChange={(e) => { const newQuantity = e.target.value; const updatedCart = cart.map((cartItem) => cartItem._id === item._id ? { ...cartItem, quantity: newQuantity } : cartItem ); setCart(updatedCart); }} size="small" variant="outlined" >
+    {[...Array(10).keys()].map((i) => (<MenuItem key={i + 1} value={i + 1}>{i + 1}</MenuItem>))}
+    </TextField>
+    <Typography 
+    sx={{position: 'relative', left: '10px', right: '0',  textAlign: 'right'}}
+    variant="body1" fontWeight="bold">${parseInt((item.price * item.quantity).toFixed(2))}</Typography>
+    <IconButton onClick={() => handleRemoveItem(item._id)} sx={{paddingLeft: 0}}>
+                    <DeleteIcon color="error" />
+                  </IconButton>   
+</Box>
+<Typography key={item._id}  variant="body1"  sx={{minWidth: '140px', textAlign:'center' ,padding: '8px', pt: 0}}>{item.name}</Typography>
+</>
+))}
+</Box>
+
+
+
+</Box>
+</>
+<>
+    <Box maxWidth='false' sx={{ py: 6,  width: 'calc(100% - 32px)',   maxWidth: {xs:'100%', sm: '333px'}}}>
+     {/* Resumen de la compra */}
+     <Grid item xs={12} md={4}>
           <Box sx={{
-             p: 3,
+             p: '10px',
+         
              border: '1px solid #c2c2c278',
             borderRadius: '8px',
              }}>
@@ -208,7 +185,7 @@ const Cart = () => {
                 value={couponCode}
                 onChange={(e) => setCouponCode(e.target.value)}
               />
-              <Button variant="contained" onClick={applyDiscount} sx={{ height: '40px' }}>
+              <Button size='small' color='primary' variant="contained" onClick={applyDiscount}>
                 Aplicar
               </Button>
             </Box>
@@ -224,7 +201,6 @@ const Cart = () => {
             </Box>
           </Box>
         </Grid>
-      </Grid>
 
       {/* Diálogo de autenticación */}
       <Dialog open={showAuthDialog} onClose={() => setShowAuthDialog(false)}>
@@ -263,7 +239,10 @@ const Cart = () => {
           </Button>
         </DialogActions>
       </Dialog>
-    </Container>
+    </Box>
+    </>
+    </Box>
+    </>
   );
 };
 
