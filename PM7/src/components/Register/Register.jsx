@@ -110,7 +110,7 @@ export default function Register() {
           <Typography>Email: {email}</Typography>
           <Typography>Contraseña: {password}</Typography></Box>
         <Typography variant="body2" sx={{ marginTop: 2, color: '#9e9e9e' }}>
-          <Link href={window.location.pathname} underline="hover" sx={{ color: '#f95f35' }}>
+          <Link href='/login' underline="hover" sx={{ color: '#f95f35' }}>
             Iniciar Sesión
           </Link>
         </Typography>
