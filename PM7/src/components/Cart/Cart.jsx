@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
 import {
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
   Box,
@@ -15,7 +15,8 @@ import {
   DialogContent,
   DialogActions,
   Alert,
-  Divider
+  Divider,
+  Link
 
 
 
@@ -26,7 +27,7 @@ import { useCart } from '../../contexts/useCart'; // Contexto del carrito
 import { useAuth } from '../../contexts/useAuth'; // Contexto de autenticación
 import Login from '../Login/Login'; // Componente de inicio de sesión
 import { useNavigate } from 'react-router-dom';
-import { padding } from '@mui/system';
+
 
 
 const Cart = () => {
@@ -203,21 +204,36 @@ const Cart = () => {
         </Grid>
 
       {/* Diálogo de autenticación */}
-      <Dialog open={showAuthDialog} onClose={() => setShowAuthDialog(false)}>
+      <Dialog className='dialog' open={showAuthDialog} onClose={() => setShowAuthDialog(false)} style={ {backgroundImage: "unset" , boxShadow: "unset"}} sx={{backgroundImage: "unset" , boxShadow: "unset"}}>  
+        <style>{`
+          .css-czofqz-MuiPaper-root-MuiDialog-paper {
+            box-shadow: unset !important;
+            background-image: unset !important;
+          }
+        `}</style>
         <DialogTitle>Autenticación requerida</DialogTitle>
         <DialogContent>
           <Alert severity="warning">
             Debes iniciar sesión para continuar con la compra.
           </Alert>
+          <Typography variant="body2" sx={{ marginTop: 2, color: '#9e9e9e' }}>
+          No te has registrado?{' '}
+          <Link href="/register" underline="hover" sx={{ color: '#f95f35' }}>
+            Registrarse
+          </Link>
+        </Typography>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setShowAuthDialog(false)} color="secondary">
+          <Button onClick={() => setShowAuthDialog(false)}
+          variant='contained'
+          color='error'>
             Cancelar
           </Button>
           <Button onClick={() => {            
             setShowLoginDialog(true)
             setShowAuthDialog(false)
-          }} color="primary">
+          }} color="primary"
+          variant='contained'>  
             Iniciar sesión
           </Button>
         </DialogActions>
