@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Table, TableBody, TableCell, TableHead, TableRow, Box, IconButton, Button, TableContainer, TablePagination, Typography, TextField, Dialog, DialogTitle, DialogContent, DialogActions, Alert, Divider } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import useAuth from '../../contexts/useAuth';
-import { borderColor, color } from '@mui/system';
 
 
 export default function ManageProductsSection() {
